@@ -1,3 +1,8 @@
 # Hide the new twitter view count
 
 ... to make twitter sane again
+
+
+get the zip from the release page: https://github.com/palashkaria/twitter-demusked/releases/tag/v1
+
+chrome extension has been submitted for review ✌🏼
