@@ -5,4 +5,6 @@
 
 get the zip from the release page: https://github.com/palashkaria/twitter-demusked/releases/tag/v1
 
+Instructions to install from zip: https://bashvlas.com/blog/install-chrome-extension-in-developer-mode/
+
 chrome extension has been submitted for review ✌🏼
