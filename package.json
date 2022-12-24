@@ -1,7 +1,7 @@
 {
-  "name": "hide-twitter-view-count",
+  "name": "twitter-demusked",
   "version": "1.0.0",
-  "description": "Hide twitter view count",
+  "description": "Remove the analytics view count from twitter",
   "main": "index.js",
   "scripts": {
     "watch": "webpack --config webpack/webpack.dev.js --watch",
@@ -14,7 +14,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/palashkaria/hide-twitter-view-count.git"
+    "url": "https://github.com/palashkaria/twitter-demusked.git"
   },
   "dependencies": {
     "react": "^17.0.1",

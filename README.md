@@ -1,5 +1,6 @@
 # Hide the new twitter view count
 
+Remove the analytics view count from twitter
 ... to make twitter sane again
 
 
