@@ -1,29 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { useChromeStorageLocal } from "use-chrome-storage";
-const Popup = () => {
-  const openPage = async () => {
-    const [tab] = await chrome.tabs.query({
-      active: true,
-      lastFocusedWindow: true,
-    });
-
-    tab.id && chrome.tabs.sendMessage(tab.id, "toggleCount");
-  };
-  const [countStatus] = useChromeStorageLocal("countStatus", true);
-  console.log({ countStatus });
-  return (
-    <>
-      <button onClick={openPage} style={{ marginRight: "5px" }}>
-        {countStatus ? "Hide count" : "Show count"}
-      </button>
-    </>
-  );
-};
+import { ChakraProvider } from "@chakra-ui/react";
+import { PopupContent } from "./PopupContent";
+import theme from "./theme";
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Popup />
-  </React.StrictMode>,
+  <ChakraProvider theme={theme}>
+    <React.StrictMode>
+      <PopupContent />
+    </React.StrictMode>
+  </ChakraProvider>,
   document.getElementById("root")
 );

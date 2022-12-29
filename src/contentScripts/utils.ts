@@ -34,7 +34,6 @@ const hideInitial = () => {
   const cellInnerDivs = [
     ...document.querySelectorAll("div[data-testid='cellInnerDiv']"),
   ];
-  console.log("hide initial", { cellInnerDivs });
   cellInnerDivs.forEach((cellInnerDiv) => {
     runHideCount(cellInnerDiv as HTMLElement);
   });
@@ -62,7 +61,6 @@ const runHideCount = (cellInnerDiv: HTMLElement) => {
 };
 
 export const showCount = () => {
-  console.log("show count!");
   window.countObserver?.disconnect();
   HIDDEN_ELEMENTS.forEach((el) => {
     (el as HTMLDivElement)?.setAttribute("style", "display: flex");
