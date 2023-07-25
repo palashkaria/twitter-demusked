@@ -95,8 +95,12 @@ export const showIndividualTweetCount = () => {
 };
 
 export const useTwitterLogo = (url: string) => {
-  const favicon = document.querySelector("link[rel='shortcut icon']");
-  favicon?.setAttribute("href", url);
+  const favicon = document.querySelector(
+    "link[rel='shortcut icon']"
+  ) as HTMLLinkElement | null;
+  if (favicon?.href.includes("twitter")) {
+    favicon?.setAttribute("href", url);
+  }
 
   setupLogo(url);
   let interval = 0;
