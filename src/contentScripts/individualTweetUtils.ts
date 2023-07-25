@@ -93,3 +93,36 @@ export const showIndividualTweetCount = () => {
     (el as HTMLDivElement)?.setAttribute("style", "display: flex");
   });
 };
+
+export const useTwitterLogo = (url: string) => {
+  const favicon = document.querySelector("link[rel='shortcut icon']");
+  favicon?.setAttribute("href", url);
+
+  setupLogo(url);
+  let interval = 0;
+  if (!document.querySelector("#og-twitter-logo")) {
+    interval = window.setInterval(() => {
+      setupLogo(url);
+      if (document.querySelector("#og-twitter-logo")) {
+        clearInterval(interval);
+      }
+    }, 500);
+  } else {
+    clearInterval(interval);
+  }
+};
+const setupLogo = (url: string) => {
+  const logoContainer = document.querySelector("h1 > a[href='/home'] > div");
+  const logoEl = logoContainer?.querySelector("svg");
+  logoEl?.setAttribute("style", "display: none");
+  const img = document.createElement("img");
+  img.id = "og-twitter-logo";
+  img.width = 36;
+  img.height = 36;
+  img.setAttribute("src", url);
+  if (logoContainer?.querySelector("#og-twitter-logo")) {
+    return;
+  }
+  logoContainer?.appendChild(img);
+};
+export const useXLogo = () => {};

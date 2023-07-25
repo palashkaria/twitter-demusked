@@ -1,6 +1,8 @@
 import {
   hideIndividualTweetCount,
   showIndividualTweetCount,
+  useTwitterLogo,
+  useXLogo,
 } from "./individualTweetUtils";
 import { hideCount, showCount } from "./utils";
 
@@ -17,6 +19,13 @@ window.addEventListener("load", () => {
       hideIndividualTweetCount();
     } else {
       showIndividualTweetCount();
+    }
+  });
+  chrome.storage.local.get("twitterLogoStatus", (result) => {
+    if (result.twitterLogoStatus === true) {
+      useTwitterLogo(chrome.runtime.getURL("twitter.png"));
+    } else {
+      useXLogo();
     }
   });
 });
@@ -43,6 +52,19 @@ chrome.runtime.onMessage.addListener((message) => {
       } else {
         chrome.storage.local.set({ tweetCountStatus: false });
         hideIndividualTweetCount();
+      }
+    });
+  }
+  if (message.type === "toggleLogo") {
+    // get current count status from storage
+    console.log("toggle logo!");
+    chrome.storage.local.get("twitterLogoStatus", (result) => {
+      if (result.twitterLogoStatus === false) {
+        chrome.storage.local.set({ twitterLogoStatus: true });
+        useTwitterLogo(message.url);
+      } else {
+        chrome.storage.local.set({ twitterLogoStatus: false });
+        useXLogo();
       }
     });
   }
